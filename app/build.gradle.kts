@@ -42,6 +42,9 @@ android {
             excludes += setOf("META-INF/LICENSE*", "META-INF/NOTICE*")
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
