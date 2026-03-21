@@ -1,0 +1,66 @@
+{
+  "healthy": {
+    "name": "Healthy Rice Leaf",
+    "severity": "None",
+    "cause": "No disease detected. Your rice plant looks healthy!",
+    "symptoms": [
+      "Leaves are green and vibrant",
+      "No spots or discoloration",
+      "Normal growth pattern"
+    ],
+    "treatment": "No treatment needed. Continue good farming practices.",
+    "prevention": "Maintain proper irrigation and use balanced fertilizers."
+  },
+  "leaf_blast": {
+    "name": "Rice Leaf Blast",
+    "severity": "High",
+    "cause": "Caused by the fungus Magnaporthe oryzae. Spreads through wind and water.",
+    "symptoms": [
+      "Diamond-shaped lesions on leaves",
+      "Gray or white center with brown border",
+      "Lesions may merge causing large dead areas",
+      "Affects leaves, nodes and panicles"
+    ],
+    "treatment": "Apply fungicide (Tricyclazole or Isoprothiolane). Remove infected leaves immediately.",
+    "prevention": "Use resistant varieties, avoid excessive nitrogen, ensure proper spacing."
+  },
+  "bacterial_blight": {
+    "name": "Bacterial Blight",
+    "severity": "High",
+    "cause": "Caused by Xanthomonas oryzae bacteria. Spreads through water and wind.",
+    "symptoms": [
+      "Water-soaked lesions on leaf edges",
+      "Yellow to white stripes along leaf margins",
+      "Wilting and drying of leaves",
+      "Milky bacterial ooze visible in morning"
+    ],
+    "treatment": "Apply copper-based bactericide. Drain flooded fields. Remove infected plants.",
+    "prevention": "Use certified disease-free seeds, avoid deep flooding, use resistant varieties."
+  },
+  "brown_spot": {
+    "name": "Brown Spot",
+    "severity": "Medium",
+    "cause": "Caused by fungus Cochliobolus miyabeanus. Common in nutrient-deficient soils.",
+    "symptoms": [
+      "Small brown circular spots on leaves",
+      "Spots have yellow halo around them",
+      "Spots enlarge and merge over time",
+      "Black fruiting bodies visible in dead spots"
+    ],
+    "treatment": "Apply fungicide (Mancozeb or Iprodione). Improve soil nutrition with potassium.",
+    "prevention": "Balanced fertilization, proper water management, use resistant varieties."
+  },
+  "tungro": {
+    "name": "Tungro Disease",
+    "severity": "High",
+    "cause": "Caused by two viruses transmitted by green leafhopper insects.",
+    "symptoms": [
+      "Yellow to orange leaf discoloration",
+      "Stunted plant growth",
+      "Reduced tillering",
+      "Sterile or partially filled grains"
+    ],
+    "treatment": "No cure once infected. Remove and burn infected plants immediately.",
+    "prevention": "Control leafhopper insects, use resistant varieties, synchronize planting dates."
+  }
+}
