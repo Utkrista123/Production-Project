@@ -39,13 +39,17 @@ class ResultFragment : Fragment() {
         val imageUri = imageUriString?.let { Uri.parse(it) }
 
         // Show captured image
-        imageUri?.let {
-            binding.ivLeafImage.setImageURI(it)
-        }
+        imageUri?.let { binding.ivLeafImage.setImageURI(it) }
+
+        // Show loading overlay
+        binding.loadingOverlay.visibility = View.VISIBLE
 
         // Run classification in background
         CoroutineScope(Dispatchers.IO).launch {
-            val result = if (imageUri != null) {
+            // Small delay so loading shows clearly
+            kotlinx.coroutines.delay(800)
+
+            val result = if (imageUri != null && imageUri != Uri.EMPTY) {
                 classifier.classify(imageUri)
             } else {
                 classifier.classify(Uri.EMPTY)
@@ -54,6 +58,16 @@ class ResultFragment : Fragment() {
             val diseaseInfo = repository.getDisease(result.diseaseName)
 
             withContext(Dispatchers.Main) {
+                // Hide loading
+                binding.loadingOverlay.visibility = View.GONE
+
+                // Animate result appearing
+                binding.confidenceRing.alpha = 0f
+                binding.cardBasicInfo.alpha = 0f
+
+                binding.confidenceRing.animate().alpha(1f).setDuration(400).start()
+                binding.cardBasicInfo.animate().alpha(1f).setDuration(400).setStartDelay(200).start()
+
                 // Set confidence ring
                 binding.confidenceRing.setConfidence(result.confidence)
 

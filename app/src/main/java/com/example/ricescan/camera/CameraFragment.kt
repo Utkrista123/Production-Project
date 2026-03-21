@@ -65,6 +65,16 @@ class CameraFragment : Fragment() {
         binding.btnFlash.setOnClickListener { toggleFlash() }
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+            == PackageManager.PERMISSION_GRANTED) {
+            if (binding.previewView.display != null) {
+                startCamera()
+            }
+        }
+    }
+
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
         cameraProviderFuture.addListener({

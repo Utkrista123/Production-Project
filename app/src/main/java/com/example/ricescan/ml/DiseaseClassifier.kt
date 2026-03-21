@@ -64,25 +64,33 @@ class DiseaseClassifier(private val context: Context) {
 
     fun classify(imageUri: Uri): DiseaseResult {
         return try {
+            if (imageUri == Uri.EMPTY) return getMockResult()
+
             val bitmap = loadBitmapFromUri(imageUri)
             val resizedBitmap = Bitmap.createScaledBitmap(bitmap, inputSize, inputSize, true)
 
-            if (classifier == null) {
-                // Model not ready yet — return mock result for UI testing
-                return getMockResult()
-            }
+            if (classifier == null) return getMockResult()
 
             val tensorImage = TensorImage.fromBitmap(resizedBitmap)
             val results: List<Classifications> = classifier!!.classify(tensorImage)
 
             if (results.isEmpty() || results[0].categories.isEmpty()) {
-                return DiseaseResult("unknown", 0f, "Unknown")
+                return DiseaseResult("unknown", 0f, "Unable to detect")
             }
 
             val topResult = results[0].categories.maxByOrNull { it.score }!!
-            val label = topResult.label.lowercase().replace(" ", "_")
             val confidence = topResult.score
 
+            // Low confidence — image is unclear or not a rice leaf
+            if (confidence < 0.4f) {
+                return DiseaseResult(
+                    diseaseName = "unknown",
+                    confidence = confidence,
+                    displayName = "Image unclear"
+                )
+            }
+
+            val label = topResult.label.lowercase().replace(" ", "_")
             DiseaseResult(
                 diseaseName = label,
                 confidence = confidence,
