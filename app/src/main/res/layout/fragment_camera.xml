@@ -69,14 +69,14 @@
         android:id="@+id/tvHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:text="Place the plant in focus"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         android:fontFamily="sans-serif-medium"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/scanBox"
+        app:layout_constraintBottom_toBottomOf="@id/scanBox"
+        app:layout_constraintStart_toStartOf="@id/scanBox"
+        app:layout_constraintEnd_toEndOf="@id/scanBox" />
 
     <!-- Zoom Buttons -->
     <ImageButton
