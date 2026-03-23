@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/treatment_card_border">
+    android:background="#080E08">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,34 +15,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Recommended Treatment"
-            android:textColor="#000000"
-            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
             android:fontFamily="sans-serif-bold"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp" />
 
         <!-- Treatment Card -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/treatment_card_bg"
-            android:padding="14dp">
+            android:background="@drawable/treatment_card_dark"
+            android:padding="16dp"
+            android:layout_marginBottom="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Recommended Action"
-                android:textColor="#2E7D32"
-                android:textSize="13sp"
+                android:textColor="#2ECC71"
+                android:textSize="14sp"
                 android:fontFamily="sans-serif-bold"
-                android:layout_marginBottom="6dp" />
+                android:layout_marginBottom="8dp" />
 
             <TextView
                 android:id="@+id/tvTreatment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Treatment details here."
-                android:textColor="#388E3C"
+                android:textColor="#AAFFAA"
+                android:textSize="14sp"
+                android:lineSpacingMultiplier="1.7" />
+
+        </LinearLayout>
+
+        <!-- Warning card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/warning_card_dark"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Important Note"
+                android:textColor="#FFC107"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvWarning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Always consult a local agricultural expert before applying any treatment. Dosage and timing depend on local conditions."
+                android:textColor="#FFE082"
                 android:textSize="13sp"
                 android:lineSpacingMultiplier="1.6" />
 

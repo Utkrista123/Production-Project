@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#080E08">
 
     <!-- Top Bar -->
     <LinearLayout
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#FFFFFF"
+        android:background="#080E08"
         android:elevation="4dp">
 
         <LinearLayout
@@ -51,10 +51,10 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:tabTextColor="#888888"
-            app:tabSelectedTextColor="#000000"
-            app:tabIndicatorColor="#000000"
-            app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="#FFFFFF"
+            app:tabIndicatorColor="#2ECC71"
             app:tabBackground="@android:color/transparent"
+            app:tabIndicatorHeight="2dp"
             app:tabTextAppearance="@style/TabTextStyle" />
 
     </LinearLayout>

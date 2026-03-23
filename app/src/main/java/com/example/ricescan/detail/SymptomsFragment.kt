@@ -52,31 +52,34 @@ class SymptomsFragment : Fragment() {
         binding.tvCause.text = info.cause
         binding.tvDiseaseType.text = when (diseaseName) {
             "leaf_blast", "brown_spot" -> "Fungal Disease"
-            "bacterial_blight" -> "Bacterial Disease"
-            "tungro" -> "Viral Disease"
-            else -> "Healthy"
+            "bacterial_blight"         -> "Bacterial Disease"
+            "tungro"                   -> "Viral Disease"
+            else                       -> "Healthy Plant"
         }
 
-        // Add symptom items dynamically
+        // Add symptom items
         binding.symptomsContainer.removeAllViews()
         info.symptoms.forEach { symptom ->
             val item = LayoutInflater.from(requireContext())
-                .inflate(R.layout.item_symptom, binding.symptomsContainer, false)
+                .inflate(R.layout.item_symptom_dark, binding.symptomsContainer, false)
             item.findViewById<TextView>(R.id.tvSymptom).text = symptom
             binding.symptomsContainer.addView(item)
         }
 
-        // Set severity bars based on disease
+        // Severity bars
         val (spread, damage, treat) = when (diseaseName) {
-            "leaf_blast"        -> Triple(0.80f, 0.85f, 0.60f)
-            "bacterial_blight"  -> Triple(0.75f, 0.80f, 0.55f)
-            "brown_spot"        -> Triple(0.65f, 0.50f, 0.80f)
-            "tungro"            -> Triple(0.70f, 0.90f, 0.20f)
-            else                -> Triple(0.10f, 0.05f, 1.00f)
+            "leaf_blast"       -> Triple(0.80f, 0.85f, 0.60f)
+            "bacterial_blight" -> Triple(0.75f, 0.80f, 0.55f)
+            "brown_spot"       -> Triple(0.65f, 0.50f, 0.80f)
+            "tungro"           -> Triple(0.70f, 0.90f, 0.20f)
+            else               -> Triple(0.10f, 0.05f, 1.00f)
         }
         setSeverityBar(binding.barSpread, spread)
         setSeverityBar(binding.barDamage, damage)
         setSeverityBar(binding.barTreat, treat)
+
+        // Recommended action
+        binding.tvRecommendedAction.text = info.treatment
     }
 
     private fun setSeverityBar(bar: View, percent: Float) {
