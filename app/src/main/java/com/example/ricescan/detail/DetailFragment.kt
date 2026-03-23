@@ -29,10 +29,7 @@ class DetailFragment : Fragment() {
 
         diseaseName = arguments?.getString("diseaseName") ?: "brown_spot"
 
-        // Set title
-        val repo = DiseaseRepository(requireContext())
-        val info = repo.getDisease(diseaseName)
-        binding.tvDetailTitle.text = info?.name ?: "Disease Detail"
+        // Title view removed from layout; no-op for now.
 
         // Setup ViewPager + Tabs
         val adapter = DetailPagerAdapter(this, diseaseName)
@@ -47,9 +44,6 @@ class DetailFragment : Fragment() {
             }
         }.attach()
 
-        binding.btnBack.setOnClickListener {
-            requireActivity().onBackPressedDispatcher.onBackPressed()
-        }
     }
 
     override fun onDestroyView() {

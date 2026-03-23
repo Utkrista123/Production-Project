@@ -140,7 +140,9 @@
                 android:id="@+id/btnCapture"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:background="@drawable/capture_button_bg">
+                android:background="@drawable/capture_button_bg"
+                android:clickable="true"
+                android:focusable="true">
             </FrameLayout>
 
             <TextView

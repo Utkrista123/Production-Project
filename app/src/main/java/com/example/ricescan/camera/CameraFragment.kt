@@ -27,6 +27,7 @@ class CameraFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var imageCapture: ImageCapture? = null
+    private var camera: Camera? = null
     private lateinit var cameraExecutor: ExecutorService
     private var flashEnabled = false
 
@@ -90,7 +91,7 @@ class CameraFragment : Fragment() {
 
             try {
                 cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(
+                camera = cameraProvider.bindToLifecycle(
                     viewLifecycleOwner,
                     CameraSelector.DEFAULT_BACK_CAMERA,
                     preview,
@@ -122,7 +123,18 @@ class CameraFragment : Fragment() {
     }
 
     private fun toggleFlash() {
+        val cam = camera
+        if (cam == null) {
+            Toast.makeText(requireContext(), "Camera not ready", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (!cam.cameraInfo.hasFlashUnit()) {
+            Toast.makeText(requireContext(), "Flash not available", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         flashEnabled = !flashEnabled
+        cam.cameraControl.enableTorch(flashEnabled)
         imageCapture?.flashMode = if (flashEnabled) ImageCapture.FLASH_MODE_ON
         else ImageCapture.FLASH_MODE_OFF
         binding.btnFlash.alpha = if (flashEnabled) 1.0f else 0.5f
