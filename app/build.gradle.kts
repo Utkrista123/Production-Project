@@ -69,8 +69,11 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:1.3.1")
     implementation("androidx.camera:camera-view:1.3.1")
 
-    // TensorFlow Lite — single library, no conflicts
-    implementation("org.tensorflow:tensorflow-lite-task-vision:0.4.4")
+    // TensorFlow Lite — runtime + local API jar (avoid manifest namespace conflict)
+    implementation("org.tensorflow:tensorflow-lite:2.7.0") {
+        exclude(group = "org.tensorflow", module = "tensorflow-lite-api")
+    }
+    implementation(files("libs/tensorflow-lite-api-2.7.0.jar"))
 
     // Navigation Component
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
