@@ -26,7 +26,10 @@ class DiseaseClassifier(private val context: Context) {
     private val modelFileName = "rice_disease_model.tflite"
     private val labelsFileName = "labels.txt"
     private val inputSize = 224
-    private val minConfidence = 0.2f
+    // Open-set heuristics for "unknown" detection (tune with real-world images)
+    private val minConfidence = 0.7f
+    private val minMargin = 0.2f
+    private val maxNormalizedEntropy = 0.5f
 
     private enum class PreprocessMode { ZERO_TO_ONE, NEGATIVE_ONE_TO_ONE }
     private val preprocessMode = PreprocessMode.NEGATIVE_ONE_TO_ONE
@@ -54,8 +57,6 @@ class DiseaseClassifier(private val context: Context) {
                 Log.w("DiseaseClassifier", "Model file not found in assets yet")
                 return
             }
-
-            labels = loadLabelsFromAssets() ?: labels
 
             labels = loadLabelsFromAssets() ?: labels
 
@@ -97,18 +98,22 @@ class DiseaseClassifier(private val context: Context) {
 
             val confidence = probabilities[topIndex]
             val label = labels.getOrNull(topIndex) ?: "unknown"
+            val secondBest = probabilities
+                .asSequence()
+                .filterIndexed { index, _ -> index != topIndex }
+                .maxOrNull() ?: 0f
+            val margin = confidence - secondBest
+            val normalizedEntropy = computeNormalizedEntropy(probabilities)
 
             Log.d("DiseaseClassifier", "Top1: ${label} (${confidence})")
 
-            // Low confidence — image is unclear or not a rice leaf
-            if (confidence < minConfidence) {
+            if (confidence < minConfidence || margin < minMargin || normalizedEntropy > maxNormalizedEntropy) {
                 return DiseaseResult(
                     diseaseName = "unknown",
                     confidence = confidence,
-                    displayName = "Image unclear"
+                    displayName = "Unknown (not a rice leaf)"
                 )
             }
-
             DiseaseResult(
                 diseaseName = label,
                 confidence = confidence,
@@ -209,6 +214,17 @@ class DiseaseClassifier(private val context: Context) {
         return exps.map { it / sum }.toFloatArray()
     }
 
+    private fun computeNormalizedEntropy(probabilities: FloatArray): Float {
+        val n = probabilities.size.coerceAtLeast(1)
+        var entropy = 0f
+        for (p in probabilities) {
+            val clipped = p.coerceAtLeast(1e-6f)
+            entropy -= (clipped * kotlin.math.ln(clipped))
+        }
+        val maxEntropy = kotlin.math.ln(n.toFloat())
+        return if (maxEntropy == 0f) 0f else (entropy / maxEntropy)
+    }
+
     private fun getLabelDisplayName(label: String): String {
         return when (label) {
             "bacterial_leaf_blight" -> "Bacterial Leaf Blight"
@@ -224,9 +240,9 @@ class DiseaseClassifier(private val context: Context) {
     // Mock result used when model is not loaded yet (for UI testing)
     private fun getMockResult(): DiseaseResult {
         return DiseaseResult(
-            diseaseName = "brown_spot",
-            confidence = 0.91f,
-            displayName = "Brown Spot"
+            diseaseName = "unknown",
+            confidence = 0f,
+            displayName = "Model not ready"
         )
     }
 
@@ -234,3 +250,4 @@ class DiseaseClassifier(private val context: Context) {
         interpreter?.close()
     }
 }
+
