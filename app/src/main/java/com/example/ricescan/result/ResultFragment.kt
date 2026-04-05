@@ -71,27 +71,44 @@ class ResultFragment : Fragment() {
                 // Set confidence ring
                 binding.confidenceRing.setConfidence(result.confidence)
 
-                // Set disease name
-                binding.tvDiseaseName.text = result.displayName
+                if (result.diseaseName == "unknown") {
+                    binding.confidenceRing.setConfidence(0f)
+                    binding.tvPlantName.text = "Unknown"
+                    binding.tvScientificName.text = "Unknown"
+                    binding.tvPlantType.text = "Unknown"
 
-                // Set severity color
-                val severity = diseaseInfo?.severity ?: "Unknown"
-                binding.tvSeverity.text = severity
-                binding.tvSeverity.setTextColor(
-                    when (severity) {
-                        "High"   -> android.graphics.Color.parseColor("#E74C3C")
-                        "Medium" -> android.graphics.Color.parseColor("#FFC107")
-                        "None"   -> android.graphics.Color.parseColor("#2ECC71")
-                        else     -> android.graphics.Color.WHITE
-                    }
-                )
+                    binding.tvDiseaseName.text = "Unknown"
+                    binding.tvSeverity.text = "Unknown"
+                    binding.tvSeverity.setTextColor(android.graphics.Color.WHITE)
 
-                // Navigate to detail screen
-                binding.tvViewDetail.setOnClickListener {
-                    val bundle = Bundle().apply {
-                        putString("diseaseName", result.diseaseName)
+                    binding.tvViewDetail.visibility = View.GONE
+                } else {
+                    // Set disease name
+                    binding.tvDiseaseName.text = result.displayName
+
+                    // Set severity color
+                    val severity = diseaseInfo?.severity ?: "Unknown"
+                    binding.tvSeverity.text = severity
+                    binding.tvSeverity.setTextColor(
+                        when (severity) {
+                            "High"   -> android.graphics.Color.parseColor("#E74C3C")
+                            "Medium" -> android.graphics.Color.parseColor("#FFC107")
+                            "None"   -> android.graphics.Color.parseColor("#2ECC71")
+                            else     -> android.graphics.Color.WHITE
+                        }
+                    )
+
+                    binding.tvPlantName.text = "Rice"
+                    binding.tvScientificName.text = "Oryza sativa"
+                    binding.tvPlantType.text = "Cereal Crop"
+
+                    binding.tvViewDetail.visibility = View.VISIBLE
+                    binding.tvViewDetail.setOnClickListener {
+                        val bundle = Bundle().apply {
+                            putString("diseaseName", result.diseaseName)
+                        }
+                        findNavController().navigate(R.id.action_result_to_detail, bundle)
                     }
-                    findNavController().navigate(R.id.action_result_to_detail, bundle)
                 }
             }
         }
