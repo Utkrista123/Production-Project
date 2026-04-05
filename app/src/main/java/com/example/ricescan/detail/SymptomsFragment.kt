@@ -81,8 +81,6 @@ class SymptomsFragment : Fragment() {
         setSeverityBar(binding.barDamage, damage)
         setSeverityBar(binding.barTreat, treat)
 
-        // Recommended action
-        binding.tvRecommendedAction.text = info.treatment
     }
 
     private fun setSeverityBar(bar: View, percent: Float) {

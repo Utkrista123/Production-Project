@@ -48,6 +48,14 @@
             android:fontFamily="sans-serif-bold"
             android:layout_marginBottom="10dp" />
 
+        <!-- Symptoms List Container -->
+        <LinearLayout
+            android:id="@+id/symptomsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp" />
+
         <!-- Cause Subheading -->
         <TextView
             android:id="@+id/tvCauseTitle"
@@ -57,6 +65,7 @@
             android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:fontFamily="sans-serif-bold"
+            android:textStyle="bold"
             android:layout_marginBottom="6dp" />
 
         <!-- Cause Description -->
@@ -68,14 +77,6 @@
             android:textColor="#CCCCCC"
             android:textSize="14sp"
             android:lineSpacingMultiplier="1.7"
-            android:layout_marginBottom="20dp" />
-
-        <!-- Symptoms List Container -->
-        <LinearLayout
-            android:id="@+id/symptomsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginBottom="24dp" />
 
         <!-- Severity Title -->
@@ -168,36 +169,6 @@
                         android:background="@drawable/bar_fill_green" />
                 </FrameLayout>
             </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- Recommended Action Card -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/treatment_card_dark"
-            android:padding="16dp"
-            android:layout_marginBottom="24dp">
-
-            <TextView
-                android:id="@+id/tvRecommendedTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recommended Action"
-                android:textColor="#2ECC71"
-                android:textSize="14sp"
-                android:fontFamily="sans-serif-bold"
-                android:layout_marginBottom="8dp" />
-
-            <TextView
-                android:id="@+id/tvRecommendedAction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Treatment details here."
-                android:textColor="#AAFFAA"
-                android:textSize="13sp"
-                android:lineSpacingMultiplier="1.6" />
 
         </LinearLayout>
 
