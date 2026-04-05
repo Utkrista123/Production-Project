@@ -51,10 +51,12 @@ class SymptomsFragment : Fragment() {
     private fun populateData(info: DiseaseInfo) {
         binding.tvCause.text = info.cause
         binding.tvDiseaseType.text = when (diseaseName) {
-            "leaf_blast", "brown_spot" -> "Fungal Disease"
-            "bacterial_blight"         -> "Bacterial Disease"
-            "tungro"                   -> "Viral Disease"
-            else                       -> "Healthy Plant"
+            "leaf_blast",
+            "brown_spot",
+            "leaf_scald",
+            "narrow_brown_spot" -> "Fungal Disease"
+            "bacterial_leaf_blight" -> "Bacterial Disease"
+            else -> "Healthy Plant"
         }
 
         // Add symptom items
@@ -68,11 +70,12 @@ class SymptomsFragment : Fragment() {
 
         // Severity bars
         val (spread, damage, treat) = when (diseaseName) {
-            "leaf_blast"       -> Triple(0.80f, 0.85f, 0.60f)
-            "bacterial_blight" -> Triple(0.75f, 0.80f, 0.55f)
-            "brown_spot"       -> Triple(0.65f, 0.50f, 0.80f)
-            "tungro"           -> Triple(0.70f, 0.90f, 0.20f)
-            else               -> Triple(0.10f, 0.05f, 1.00f)
+            "leaf_blast" -> Triple(0.80f, 0.85f, 0.60f)
+            "bacterial_leaf_blight" -> Triple(0.75f, 0.80f, 0.55f)
+            "brown_spot" -> Triple(0.65f, 0.50f, 0.80f)
+            "leaf_scald" -> Triple(0.60f, 0.70f, 0.65f)
+            "narrow_brown_spot" -> Triple(0.60f, 0.55f, 0.75f)
+            else -> Triple(0.10f, 0.05f, 1.00f)
         }
         setSeverityBar(binding.barSpread, spread)
         setSeverityBar(binding.barDamage, damage)

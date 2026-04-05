@@ -41,43 +41,20 @@ class PreventionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val repo = DiseaseRepository(requireContext())
         val info = repo.getDisease(diseaseName)
-        binding.tvPrevention.text = info?.prevention ?: "No prevention data available."
+        val preventionPoints = info?.prevention
+            ?.split("\n")
+            ?.map { it.trim().removePrefix("•").trim() }
+            ?.filter { it.isNotEmpty() }
+            .orEmpty()
 
-        // Add best practice tips dynamically
-        val tips = when (diseaseName) {
-            "leaf_blast"       -> listOf(
-                "Use certified blast-resistant varieties",
-                "Avoid excessive nitrogen fertilizer",
-                "Ensure proper plant spacing for airflow",
-                "Monitor fields regularly during humid weather"
-            )
-            "bacterial_blight" -> listOf(
-                "Use disease-free certified seeds",
-                "Avoid deep flooding of fields",
-                "Remove and burn infected plant debris",
-                "Apply copper-based bactericide preventively"
-            )
-            "brown_spot"       -> listOf(
-                "Maintain balanced soil nutrition",
-                "Apply potassium fertilizer regularly",
-                "Avoid water stress during growing season",
-                "Use resistant varieties when available"
-            )
-            "tungro"           -> listOf(
-                "Control green leafhopper population",
-                "Synchronize planting with neighboring farms",
-                "Remove infected plants immediately",
-                "Use tungro-resistant rice varieties"
-            )
-            else               -> listOf(
-                "Continue proper irrigation management",
-                "Use balanced fertilizers",
-                "Monitor crop health regularly"
-            )
+        binding.tvPrevention.text = if (preventionPoints.isNotEmpty()) {
+            "Key prevention points:"
+        } else {
+            "No prevention data available."
         }
 
         binding.tipsContainer.removeAllViews()
-        tips.forEach { tip ->
+        preventionPoints.forEach { tip ->
             val item = LayoutInflater.from(requireContext())
                 .inflate(R.layout.item_symptom_dark, binding.tipsContainer, false)
             item.findViewById<TextView>(R.id.tvSymptom).text = tip
