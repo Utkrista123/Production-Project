@@ -48,6 +48,17 @@
             android:fontFamily="sans-serif-bold"
             android:layout_marginBottom="10dp" />
 
+        <!-- Cause Subheading -->
+        <TextView
+            android:id="@+id/tvCauseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cause"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-bold"
+            android:layout_marginBottom="6dp" />
+
         <!-- Cause Description -->
         <TextView
             android:id="@+id/tvCause"

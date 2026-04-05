@@ -43,7 +43,7 @@ class PreventionFragment : Fragment() {
         val info = repo.getDisease(diseaseName)
         val preventionPoints = info?.prevention
             ?.split("\n")
-            ?.map { it.trim().removePrefix("•").trim() }
+            ?.map { it.trim().removePrefix("•").removePrefix("-").removePrefix("*").trim() }
             ?.filter { it.isNotEmpty() }
             .orEmpty()
 

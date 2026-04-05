@@ -64,7 +64,52 @@ Seed treatment with fungicide
 Apply foliar nutrients
 Use organic compost to improve soil health
 
-3. Leaf Blast
+3. Healthy
+1. Healthy Characteristics
+Bright, uniform green color
+No spots, streaks, or lesions
+Smooth, clean surface
+No yellowing or browning
+Leaf tips are fresh (not burnt)
+Proper shape (long, narrow, straight)
+No curling, folding, or distortion
+No holes or insect damage
+
+
+🌱 2. Growth Indicators
+Leaves stand upright
+New leaves appear regularly
+Good leaf size and expansion
+Strong and flexible texture
+Balanced tillering (not too sparse or dense)
+
+⚙️ 3. Plant Health Indicators
+Good photosynthesis (deep green color)
+Proper water balance (no wilting)
+Efficient nutrient uptake
+No signs of stress
+Uniform growth across the field
+
+🛡️ 4. Maintenance (instead of Prevention)
+Apply balanced fertilizers (NPK)
+Maintain proper irrigation
+Ensure good drainage
+Use quality seeds
+Maintain proper spacing
+Monitor regularly for early disease signs
+Keep field clean (remove weeds & debris)
+
+💪 5. Care Practices (instead of Treatment)
+Continue proper fertilization schedule
+Maintain water level in field
+Apply micronutrients if needed
+Protect from pests (preventive care)
+Avoid overuse of chemicals
+Follow good farming practices
+
+👉 This replaces “Treatment”
+
+4. Leaf Blast
 🔍 Symptoms
 Diamond-shaped (spindle) lesions
 Gray or white center with brown margins
@@ -94,7 +139,7 @@ Carbendazim
 Spray at early stage
 Use biological control agents (e.g., Trichoderma)
 
-4. Leaf Scald
+5. Leaf Scald
 🔍 Symptoms
 Large irregular lesions on leaves
 Lesions start at leaf tips
@@ -123,7 +168,7 @@ Mancozeb
 Remove infected leaves
 Improve plant nutrition
 
-5. Narrow Brown Spot
+6. Narrow Brown Spot
 🔍 Symptoms
 Narrow, linear brown streaks on leaves
 Lesions run parallel to veins
