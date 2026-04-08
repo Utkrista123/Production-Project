@@ -67,6 +67,9 @@ class CameraFragment : Fragment() {
         binding.btnFlash.setOnClickListener { toggleFlash() }
         binding.btnZoomIn.setOnClickListener { adjustZoom(zoomStep) }
         binding.btnZoomOut.setOnClickListener { adjustZoom(-zoomStep) }
+        binding.btnClose.setOnClickListener {
+            findNavController().popBackStack(R.id.homeFragment, false)
+        }
     }
 
     override fun onResume() {

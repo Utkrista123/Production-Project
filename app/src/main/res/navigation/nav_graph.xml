@@ -11,7 +11,15 @@
         <action
             android:id="@+id/action_home_to_camera"
             app:destination="@id/cameraFragment" />
+        <action
+            android:id="@+id/action_home_to_comingSoon"
+            app:destination="@id/comingSoonFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/comingSoonFragment"
+        android:name="com.example.ricescan.comingsoon.ComingSoonFragment"
+        android:label="Coming Soon" />
 
     <fragment
         android:id="@+id/cameraFragment"

@@ -95,7 +95,7 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_marginStart="22dp"
-                        android:src="@drawable/ic_leaf_home"
+                        android:src="@drawable/my_plant"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -250,7 +250,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_leaf_home"
+                    android:src="@drawable/my_plant"
                     android:tint="@color/home_muted" />
 
                 <TextView

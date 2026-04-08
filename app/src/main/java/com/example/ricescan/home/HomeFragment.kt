@@ -38,10 +38,17 @@ class HomeFragment : Fragment() {
             Toast.makeText(requireContext(), "My Plants coming soon", Toast.LENGTH_SHORT).show()
         }
         binding.cardReminder.setOnClickListener {
-            Toast.makeText(requireContext(), "Reminder coming soon", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_home_to_comingSoon)
         }
         binding.cardWeather.setOnClickListener {
-            Toast.makeText(requireContext(), "Weather coming soon", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_home_to_comingSoon)
+        }
+
+        binding.navReminder.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_comingSoon)
+        }
+        binding.navWeather.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_comingSoon)
         }
     }
 
