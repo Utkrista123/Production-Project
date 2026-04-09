@@ -40,16 +40,6 @@
 
         </LinearLayout>
 
-        <!-- Tips title -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Best Practices"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-bold"
-            android:layout_marginBottom="14dp" />
-
         <!-- Tip items -->
         <LinearLayout
             android:id="@+id/tipsContainer"

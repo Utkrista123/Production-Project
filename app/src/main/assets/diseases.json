@@ -1,0 +1,98 @@
+﻿{
+  "bacterial_leaf_blight": {
+    "name": "Bacterial Leaf Blight",
+    "severity": "High",
+    "cause": "- Caused by bacterium Xanthomonas oryzae\n- Spreads through rain splash, irrigation water, wind\n- Favored by high humidity and warm temperatures (25-34 C)\n- Heavy nitrogen fertilizer use increases risk\n- Enters through wounds or natural openings",
+    "symptoms": [
+      "Yellowing of leaf tips that spreads downward",
+      "Water-soaked streaks along leaf margins",
+      "Leaves turn pale green -> yellow -> white",
+      "Drying and wilting of leaves (burnt appearance)",
+      "\"Kresek\" phase: sudden wilting of young plants",
+      "Milky bacterial ooze from cut leaves",
+      "Reduced tillering and stunted growth"
+    ],
+    "treatment": "- Apply copper-based bactericides\n- Use antibiotics like streptomycin (where allowed)\n- Spray neem-based bio-pesticides\n- Drain excess water temporarily\n- Apply silicon fertilizers to strengthen plants",
+    "prevention": "- Use resistant rice varieties\n- Avoid excessive nitrogen fertilizer\n- Maintain proper field drainage\n- Use clean, certified seeds\n- Practice crop rotation\n- Avoid overcrowding of plants\n- Remove infected plant debris"
+  },
+  "brown_spot": {
+    "name": "Brown Spot",
+    "severity": "Medium",
+    "cause": "- Caused by fungus Bipolaris oryzae\n- Common in nutrient-deficient soils and drought conditions\n- Spread by wind, rain, and infected seeds\n- Often linked to poor soil fertility",
+    "symptoms": [
+      "Small circular to oval brown spots on leaves",
+      "Spots have gray center and dark brown margins",
+      "Lesions may merge forming large patches",
+      "Infection on grains (discolored seeds)",
+      "Reduced grain quality and yield",
+      "Leaves dry prematurely"
+    ],
+    "treatment": "- Spray fungicides (e.g., mancozeb, propiconazole)\n- Seed treatment with fungicide\n- Apply foliar nutrients\n- Use organic compost to improve soil health",
+    "prevention": "- Use disease-free seeds\n- Apply balanced fertilizers (especially potassium)\n- Maintain proper irrigation\n- Improve soil fertility\n- Avoid water stress\n- Seed treatment before sowing"
+  },
+  "healthy": {
+    "name": "Healthy Rice Leaf",
+    "severity": "None",
+    "cause": "- No disease detected.",
+    "symptoms": [
+      "Bright, uniform green color",
+      "No spots, streaks, or lesions",
+      "Smooth, clean surface",
+      "No yellowing or browning",
+      "Leaf tips are fresh (not burnt)",
+      "Proper shape (long, narrow, straight)",
+      "No curling, folding, or distortion",
+      "No holes or insect damage",
+      "Leaves stand upright",
+      "New leaves appear regularly",
+      "Good leaf size and expansion",
+      "Strong and flexible texture",
+      "Balanced tillering (not too sparse or dense)"
+    ],
+    "treatment": "- Continue proper fertilization schedule\n- Maintain water level in field\n- Apply micronutrients if needed\n- Protect from pests (preventive care)\n- Avoid overuse of chemicals\n- Follow good farming practices",
+    "prevention": "- Healthy Characteristics\n- Growth Indicators\n- Plant Health Indicators"
+  },
+  "leaf_blast": {
+    "name": "Rice Leaf Blast",
+    "severity": "High",
+    "cause": "- Caused by fungus Magnaporthe oryzae\n- Thrives in cool nights and warm days\n- Favored by high humidity\n- Spread by airborne spores\n- Excess nitrogen and dense planting increase risk",
+    "symptoms": [
+      "Diamond-shaped (spindle) lesions",
+      "Gray or white center with brown margins",
+      "Lesions enlarge and merge",
+      "Leaves dry and die",
+      "Neck blast causes panicle breakage",
+      "Reduced grain filling"
+    ],
+    "treatment": "- Apply fungicides: Tricyclazole, Carbendazim\n- Spray at early stage\n- Use biological control agents (e.g., Trichoderma)",
+    "prevention": "- Grow resistant varieties\n- Avoid excessive nitrogen use\n- Maintain proper spacing\n- Ensure good air circulation\n- Timely planting"
+  },
+  "leaf_scald": {
+    "name": "Leaf Scald",
+    "severity": "Medium",
+    "cause": "- Caused by fungus Microdochium oryzae\n- Occurs in high humidity and poor nutrient conditions\n- Spread by wind and rain\n- Often appears in stressed plants",
+    "symptoms": [
+      "Large irregular lesions on leaves",
+      "Lesions start at leaf tips",
+      "Alternating light and dark bands (zoning)",
+      "Leaves appear scorched or burned",
+      "Premature drying of leaves"
+    ],
+    "treatment": "- Apply fungicides like Thiophanate-methyl or Mancozeb\n- Remove infected leaves\n- Improve plant nutrition",
+    "prevention": "- Maintain proper fertilization\n- Improve drainage\n- Use resistant varieties\n- Avoid plant stress\n- Ensure proper spacing"
+  },
+  "narrow_brown_spot": {
+    "name": "Narrow Brown Spot",
+    "severity": "Medium",
+    "cause": "- Caused by fungus Cercospora oryzae\n- Favored by high humidity and warm temperatures\n- Spread by wind and rain\n- More common in nutrient-poor soils",
+    "symptoms": [
+      "Narrow, linear brown streaks on leaves",
+      "Lesions run parallel to veins",
+      "Spots may enlarge and merge",
+      "Leaves become dry and weak",
+      "Reduced photosynthesis"
+    ],
+    "treatment": "- Spray fungicides: Mancozeb, Chlorothalonil\n- Apply micronutrients (especially zinc)\n- Remove infected plant debris",
+    "prevention": "- Use resistant varieties\n- Maintain balanced fertilization\n- Avoid overcrowding\n- Improve field sanitation\n- Use clean seeds"
+  }
+}

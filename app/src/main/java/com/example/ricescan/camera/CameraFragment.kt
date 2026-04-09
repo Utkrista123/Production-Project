@@ -30,6 +30,7 @@ class CameraFragment : Fragment() {
     private var camera: Camera? = null
     private lateinit var cameraExecutor: ExecutorService
     private var flashEnabled = false
+    private val zoomStep = 0.1f
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
@@ -64,6 +65,8 @@ class CameraFragment : Fragment() {
         binding.btnCapture.setOnClickListener { takePhoto() }
         binding.btnGallery.setOnClickListener { galleryLauncher.launch("image/*") }
         binding.btnFlash.setOnClickListener { toggleFlash() }
+        binding.btnZoomIn.setOnClickListener { adjustZoom(zoomStep) }
+        binding.btnZoomOut.setOnClickListener { adjustZoom(-zoomStep) }
     }
 
     override fun onResume() {
@@ -97,6 +100,7 @@ class CameraFragment : Fragment() {
                     preview,
                     imageCapture
                 )
+                updateZoomButtons()
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Camera failed: ${e.message}", Toast.LENGTH_SHORT).show()
             }
@@ -138,6 +142,28 @@ class CameraFragment : Fragment() {
         imageCapture?.flashMode = if (flashEnabled) ImageCapture.FLASH_MODE_ON
         else ImageCapture.FLASH_MODE_OFF
         binding.btnFlash.alpha = if (flashEnabled) 1.0f else 0.5f
+    }
+
+    private fun adjustZoom(delta: Float) {
+        val cam = camera
+        if (cam == null) {
+            Toast.makeText(requireContext(), "Camera not ready", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val zoomState = cam.cameraInfo.zoomState.value
+        val current = zoomState?.linearZoom ?: 0f
+        val target = (current + delta).coerceIn(0f, 1f)
+        cam.cameraControl.setLinearZoom(target)
+        updateZoomButtons()
+    }
+
+    private fun updateZoomButtons() {
+        val cam = camera ?: return
+        val zoomState = cam.cameraInfo.zoomState.value ?: return
+        binding.btnZoomIn.isEnabled = zoomState.linearZoom < 1f
+        binding.btnZoomOut.isEnabled = zoomState.linearZoom > 0f
+        binding.btnZoomIn.alpha = if (binding.btnZoomIn.isEnabled) 1.0f else 0.5f
+        binding.btnZoomOut.alpha = if (binding.btnZoomOut.isEnabled) 1.0f else 0.5f
     }
 
     private fun navigateToResult(imageUri: String) {
