@@ -29,10 +29,6 @@ class HomeFragment : Fragment() {
         binding.cardIdentify.setOnClickListener {
             findNavController().navigate(R.id.action_home_to_camera)
         }
-        binding.homeFab.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_camera)
-        }
-
         binding.cardPlants.setOnClickListener {
             findNavController().navigate(R.id.action_home_to_myPlants)
         }
@@ -43,15 +39,6 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_home_to_comingSoon)
         }
 
-        binding.navReminder.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_comingSoon)
-        }
-        binding.navPlants.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_myPlants)
-        }
-        binding.navWeather.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_comingSoon)
-        }
     }
 
     override fun onDestroyView() {

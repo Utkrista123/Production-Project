@@ -45,6 +45,13 @@ class MyPlantsFragment : Fragment() {
         binding.recyclerHistory.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerHistory.adapter = adapter
 
+        binding.btnClear.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch {
+                withContext(Dispatchers.IO) { store.clear() }
+                loadHistory()
+            }
+        }
+
         loadHistory()
     }
 

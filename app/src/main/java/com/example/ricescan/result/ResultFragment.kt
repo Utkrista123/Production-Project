@@ -114,6 +114,7 @@ class ResultFragment : Fragment() {
                         findNavController().navigate(R.id.action_result_to_detail, bundle)
                     }
                 }
+
             }
         }
     }
