@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.ricescan.R
 import com.example.ricescan.databinding.FragmentResultBinding
+import com.example.ricescan.history.DetectionHistoryStore
 import com.example.ricescan.ml.DiseaseClassifier
 import com.example.ricescan.ml.DiseaseRepository
 import kotlinx.coroutines.*
@@ -34,6 +35,7 @@ class ResultFragment : Fragment() {
 
         classifier = DiseaseClassifier(requireContext())
         repository = DiseaseRepository(requireContext())
+        val historyStore = DetectionHistoryStore(requireContext())
 
         val imageUriString = arguments?.getString("imageUri")
         val imageUri = imageUriString?.let { Uri.parse(it) }
@@ -54,6 +56,8 @@ class ResultFragment : Fragment() {
             } else {
                 classifier.classify(Uri.EMPTY)
             }
+
+            historyStore.addResult(result, imageUriString)
 
             val diseaseInfo = repository.getDisease(result.diseaseName)
 
