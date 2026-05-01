@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Flora Lens</string>
+    <string name="splash_tagline">Smart Rice Disease Detection</string>
 </resources>

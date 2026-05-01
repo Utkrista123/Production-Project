@@ -13,4 +13,11 @@
     <color name="home_text">#F2F2F2</color>
     <color name="home_muted">#7A7A7A</color>
     <color name="home_accent">#35C985</color>
+    <color name="splash_bg_start">#07130F</color>
+    <color name="splash_bg_end">#010403</color>
+    <color name="splash_orb_primary">#2CCB86</color>
+    <color name="splash_orb_secondary">#1AFFFFFF</color>
+    <color name="splash_card_bg">#14FFFFFF</color>
+    <color name="splash_card_stroke">#30FFFFFF</color>
+    <color name="splash_text_secondary">#C7D3CD</color>
 </resources>
