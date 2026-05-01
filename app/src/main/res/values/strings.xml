@@ -2,4 +2,6 @@
     <string name="app_name">Flora Lens</string>
     <string name="splash_tagline">Smart Rice Disease Detection</string>
     <string name="unknown_result_message">Could not find the plant. Please try again.</string>
+    <string name="continue_text">Continue</string>
+    <string name="camera_help_image_desc">Camera help guide image</string>
 </resources>

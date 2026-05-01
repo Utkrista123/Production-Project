@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.*
@@ -17,6 +19,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.ricescan.R
 import com.example.ricescan.databinding.FragmentCameraBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -65,6 +69,7 @@ class CameraFragment : Fragment() {
         binding.btnCapture.setOnClickListener { takePhoto() }
         binding.btnGallery.setOnClickListener { galleryLauncher.launch("image/*") }
         binding.btnFlash.setOnClickListener { toggleFlash() }
+        binding.btnHelp.setOnClickListener { showHelpSheet() }
         binding.btnZoomIn.setOnClickListener { adjustZoom(zoomStep) }
         binding.btnZoomOut.setOnClickListener { adjustZoom(-zoomStep) }
         binding.btnClose.setOnClickListener {
@@ -176,6 +181,27 @@ class CameraFragment : Fragment() {
             putString("imageUri", imageUri)
         }
         findNavController().navigate(R.id.action_camera_to_result, bundle)
+    }
+
+    private fun showHelpSheet() {
+        val dialog = BottomSheetDialog(requireContext())
+        val contentView = layoutInflater.inflate(R.layout.bottom_sheet_camera_help, null)
+        dialog.setContentView(contentView)
+        dialog.setOnShowListener {
+            val bottomSheet = dialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+            bottomSheet?.let { sheet ->
+                sheet.layoutParams.height = LayoutParams.MATCH_PARENT
+                val behavior = BottomSheetBehavior.from(sheet)
+                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                behavior.skipCollapsed = true
+            }
+        }
+
+        contentView.findViewById<Button>(R.id.btnContinue).setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     override fun onDestroyView() {
