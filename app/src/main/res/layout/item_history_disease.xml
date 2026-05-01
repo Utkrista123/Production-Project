@@ -36,7 +36,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/ivThumbnail"
             android:layout_marginStart="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnDeleteItem"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -49,8 +49,22 @@
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/ivThumbnail"
             android:layout_marginStart="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnDeleteItem"
             app:layout_constraintTop_toBottomOf="@id/tvDiseaseName" />
+
+        <ImageButton
+            android:id="@+id/btnDeleteItem"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/circle_dark_bg"
+            android:contentDescription="@string/delete_history_item"
+            android:padding="8dp"
+            android:src="@drawable/ic_close"
+            android:tint="@color/home_muted"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

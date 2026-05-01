@@ -35,12 +35,20 @@ class MyPlantsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         store = DetectionHistoryStore(requireContext())
-        adapter = HistoryAdapter { item ->
-            val bundle = Bundle().apply {
-                putString("diseaseName", item.diseaseName)
+        adapter = HistoryAdapter(
+            onItemClick = { item ->
+                val bundle = Bundle().apply {
+                    putString("diseaseName", item.diseaseName)
+                }
+                findNavController().navigate(R.id.action_myPlants_to_detail, bundle)
+            },
+            onDeleteClick = { item ->
+                viewLifecycleOwner.lifecycleScope.launch {
+                    withContext(Dispatchers.IO) { store.deleteById(item.id) }
+                    loadHistory()
+                }
             }
-            findNavController().navigate(R.id.action_myPlants_to_detail, bundle)
-        }
+        )
 
         binding.recyclerHistory.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerHistory.adapter = adapter

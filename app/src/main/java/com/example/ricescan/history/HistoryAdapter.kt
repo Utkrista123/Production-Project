@@ -12,14 +12,15 @@ import java.util.Date
 import java.util.Locale
 
 class HistoryAdapter(
-    private val onItemClick: (DetectionHistoryItem) -> Unit
+    private val onItemClick: (DetectionHistoryItem) -> Unit,
+    private val onDeleteClick: (DetectionHistoryItem) -> Unit
 ) : ListAdapter<DetectionHistoryItem, HistoryAdapter.HistoryViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
         val binding = ItemHistoryDiseaseBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        return HistoryViewHolder(binding, onItemClick)
+        return HistoryViewHolder(binding, onItemClick, onDeleteClick)
     }
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
@@ -28,7 +29,8 @@ class HistoryAdapter(
 
     class HistoryViewHolder(
         private val binding: ItemHistoryDiseaseBinding,
-        private val onItemClick: (DetectionHistoryItem) -> Unit
+        private val onItemClick: (DetectionHistoryItem) -> Unit,
+        private val onDeleteClick: (DetectionHistoryItem) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: DetectionHistoryItem) {
@@ -46,6 +48,10 @@ class HistoryAdapter(
 
             binding.root.setOnClickListener {
                 onItemClick(item)
+            }
+
+            binding.btnDeleteItem.setOnClickListener {
+                onDeleteClick(item)
             }
         }
 

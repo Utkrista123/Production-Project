@@ -29,6 +29,10 @@ class DetectionHistoryStore(context: Context) {
         dao.clear()
     }
 
+    suspend fun deleteById(id: Long) {
+        dao.deleteById(id)
+    }
+
     companion object {
         private const val MAX_ITEMS = 20
     }
