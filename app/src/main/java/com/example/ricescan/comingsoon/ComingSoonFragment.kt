@@ -48,6 +48,7 @@ class ComingSoonFragment : Fragment() {
             .setStartDelay(120)
             .setDuration(320)
             .start()
+
     }
 
     override fun onDestroyView() {

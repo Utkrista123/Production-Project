@@ -12,6 +12,9 @@
             android:id="@+id/action_home_to_camera"
             app:destination="@id/cameraFragment" />
         <action
+            android:id="@+id/action_home_to_myPlants"
+            app:destination="@id/myPlantsFragment" />
+        <action
             android:id="@+id/action_home_to_comingSoon"
             app:destination="@id/comingSoonFragment" />
     </fragment>
@@ -55,6 +58,15 @@
         <argument
             android:name="diseaseName"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myPlantsFragment"
+        android:name="com.example.ricescan.history.MyPlantsFragment"
+        android:label="My Plants">
+        <action
+            android:id="@+id/action_myPlants_to_detail"
+            app:destination="@id/detailFragment" />
     </fragment>
 
 </navigation>
