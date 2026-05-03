@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/black"
+    android:padding="0dp">
+
+    <ImageView
+        android:id="@+id/ivHelpImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/camera_help_image_desc"
+        android:scaleType="centerCrop"
+        android:src="@drawable/camera_help" />
+
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/home_accent"
+        android:textColor="@android:color/black"
+        android:text="@string/continue_text" />
+
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.ricescan.R
@@ -86,6 +87,12 @@ class ResultFragment : Fragment() {
                     binding.tvSeverity.setTextColor(android.graphics.Color.WHITE)
 
                     binding.tvViewDetail.visibility = View.GONE
+
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.unknown_result_message),
+                        Toast.LENGTH_LONG
+                    ).show()
                 } else {
                     // Set disease name
                     binding.tvDiseaseName.text = result.displayName

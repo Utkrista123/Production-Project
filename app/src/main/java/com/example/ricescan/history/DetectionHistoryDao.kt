@@ -17,6 +17,9 @@ interface DetectionHistoryDao {
     @Query("DELETE FROM detection_history")
     suspend fun clear()
 
+    @Query("DELETE FROM detection_history WHERE id = :id")
+    suspend fun deleteById(id: Long)
+
     @Query("DELETE FROM detection_history WHERE id NOT IN (SELECT id FROM detection_history ORDER BY timestamp DESC LIMIT :limit)")
     suspend fun trimTo(limit: Int)
 }
